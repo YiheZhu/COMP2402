@@ -472,7 +472,7 @@ public class TwoFourTree extends StringSSet implements LevelOrderTraversal{
         Node parentNode = emptyNode.parent;
         Node siblingNode = parentNode.children[emptyIndex - 1];
         siblingNode.parent = parentNode;
-        // Copy down the parent at WCAI - 1 into the left sibling
+        // Copy down the parent at Node postion - 1 into the left sibling
         siblingNode.data[getSize(siblingNode)] = parentNode.data[emptyIndex - 1];
         // Set the empty node child to belong to the left sibling
         siblingNode.children[2] = emptyNode.children[0];
@@ -596,9 +596,9 @@ public class TwoFourTree extends StringSSet implements LevelOrderTraversal{
         else {
             Node predecessorNode = findPredecessorNode(deleteNode,x);
             String predecessor = predecessorNode.data[getSize(predecessorNode) - 1];
-            // Move the in-order successor up to replace the deleted item
+            // Move the predecessor up to replace the deleted item
             deleteNode.data[getDataPos(deleteNode,x)] = predecessor;
-            // Delete the inorder successor
+            // Delete the predecessor
             predecessorNode.data[getSize(predecessorNode) - 1] = null;
             // Set deleteNode equal to the node predecessor to check for underflow
             deleteNode = predecessorNode;
